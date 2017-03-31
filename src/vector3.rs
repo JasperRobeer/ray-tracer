@@ -1,8 +1,9 @@
 //! Representation of a 3D vector.
 
+use std::f32;
 use std::ops::{Add, Sub, Mul, Div, Neg};
 
-#[derive(Debug)]
+#[derive(Debug, Copy, Clone)]
 pub struct Vector3 {
     pub x: f32,
     pub y: f32,
@@ -27,6 +28,16 @@ pub fn cross(a: Vector3, b: Vector3) -> Vector3 {
         y: a.z * b.x - a.x * b.z,
         z: a.x * b.y - a.y * b.x
     }
+}
+
+/// Computes the length of a vector.
+pub fn length(v: Vector3) -> f32 {
+    (v.x * v.x + v.y * v.y + v.z * v.z).sqrt()
+}
+
+/// Returns a normalized vector with length of 1.
+pub fn normalize(v: Vector3) -> Vector3 {
+    v / length(v)
 }
 
 /// The following operators are defined below:
