@@ -47,6 +47,7 @@ pub fn normalize(v: Vector3) -> Vector3 {
 ///     Vector3 / Vector3
 ///     Vector3 * f32
 ///     Vector3 / f32
+///     f32 * Vector3
 ///     -Vector3
 
 impl Add for Vector3 {
@@ -117,6 +118,18 @@ impl Div<f32> for Vector3 {
             x: self.x / rhs,
             y: self.y / rhs,
             z: self.z / rhs
+        }
+    }
+}
+
+impl Mul<Vector3> for f32 {
+    type Output = Vector3;
+
+    fn mul(self, rhs: Vector3) -> Vector3 {
+        Vector3 {
+            x: self * rhs.x,
+            y: self * rhs.y,
+            z: self * rhs.z
         }
     }
 }

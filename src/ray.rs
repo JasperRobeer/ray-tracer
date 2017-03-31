@@ -2,7 +2,7 @@
 
 use vector3::Vector3;
 
-#[derive(Debug)]
+#[derive(Debug, Copy, Clone)]
 pub struct Ray {
     origin:    Vector3,
     direction: Vector3,
